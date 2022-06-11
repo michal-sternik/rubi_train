@@ -1,0 +1,90 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Home site{% endblock %}
+{% include "base.html" %}
+{% block content %}
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="{% static 'main/images./1.jpg' %}" class="img_style_carousel">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Use built-in Timer.</h1>
+            <p>We offer you build in timer, where after sign-up you will be able to save your times in database and view them whenever you want.</p>
+            <p><a class="btn btn-lg btn-primary" href="/timer">Try out timer!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="{% static 'main/images./2.jpg' %}" class="img_style_carousel">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Learn with us!</h1>
+            <p>We offer list of algorithms for each cube for you to train!</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn algorithms!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="{% static 'main/images./3.jpg' %}" class="img_style_carousel">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Wanna compete?</h1>
+            <p>Check out where near by competitions are!</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Browse competitions</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="{% static 'main/images./timer.png' %}" class="bd-placeholder-img rounded-circle", width="170px", height="140px">
+
+<!--        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" ></rect></svg>-->
+<!--        <img src="static/images/timer.png" class="img_style_below_carousel">-->
+        <h2>Timer</h2>
+        <p>Try out the timer and store your times to the database after signing in. Without signing in you can use our timer freely but without storing data into database</p>
+        <p><a class="btn btn-secondary" href="/timer">Time your solves! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img  src="{% static 'main/images./algs.png' %}" style="object-fit: contain" class="bd-placeholder-img rounded-circle", width="140px", height="140px">
+        <h2>Algorithms</h2>
+        <p> 2x2, 3x3, 4x4 and a lot more algorithms to learn with us, get better and faster!</p>
+        <p><a class="btn btn-secondary" href="#">Check algs! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+<!--        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
+        <img src="{% static 'main/images./comps.png' %}" class="bd-placeholder-img rounded-circle", width="140px", height="140px">
+        <h2>Competitions</h2>
+        <p>When you're ready, go check competitions, sign in and compete with other speedcubers!</p>
+        <p><a class="btn btn-secondary" href="#">View competitions! &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+  </div>
+{% endblock %}
