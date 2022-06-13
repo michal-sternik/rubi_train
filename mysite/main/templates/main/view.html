@@ -1,4 +1,4 @@
-
+<!--View our times for logged user-->
 {% extends "main/base.html" %}
 
 {% block title %}
@@ -19,6 +19,7 @@
         </tr>
       </thead>
       <tbody>
+      <!--Display times specific for logged user (data received from views.py)-->
         {% for record in user.userResults.all %}
             <tr>
               <th scope="row">{{record.id}}</th>

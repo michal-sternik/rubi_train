@@ -6,23 +6,21 @@ from django.http import JsonResponse
 import requests
 from bs4 import BeautifulSoup
 
-# Create your views here.
 
-def index(response, id):
-    return HttpResponse(id)
-
-
+# homepage
 def home(response):
     return render(response, "main/home.html", {})
 
+# base page with navbar and footer to extend from
 def base(response):
     return render(response, "main/base.html", {})
 
+# timer page
 def timer(response):
     cube_types = CubeType.objects.all()
     return render(response, "main/timer.html", {"cube_types":cube_types})
 
-
+# view to receive data from timer and push it to database
 def send_time(request):
     time = request.POST.get('time', None)
     cube = request.POST.get('cube', None)
@@ -31,14 +29,17 @@ def send_time(request):
     record.save()
     return JsonResponse({'result':"ok"})
 
+# site to view times from specified user
 def view(response):
     return render(response, "main/view.html", {})
 
+# view to handle delete button near every record on /view/ page
 def delete_record(response, record_id):
     record = UserResults.objects.get(pk=record_id)
     record.delete()
     return redirect("view")
 
+# site with listed competitions that are planned, using beautifulsoup
 def view_competitions(request):
     html_page = requests.get(
         "https://www.worldcubeassociation.org/competitions?utf8=%E2%9C%93&region=Poland&search=&state=present&year=all+years&from_date=&to_date=&delegate=&display=list").text
@@ -56,5 +57,6 @@ def view_competitions(request):
         print(comp[0])
     return render(request, "main/competitions.html", {"comps":compsToPass})
 
+# site to display pdf documents with tutorials/algorithms
 def display_algs(response):
     return render(response, "main/algorithms.html", {})

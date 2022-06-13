@@ -1,6 +1,4 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
+
 html{
   position: relative;
   min-height: 100%;
@@ -9,15 +7,11 @@ body {
   padding-top: 116px;
   color: #5a5a5a;
 }
-/*html,body{*/
-/*  margin:0;*/
-/*  padding:0;*/
-/*}*/
+
 .pageContentWrapper{
   margin-bottom:24px;/* Height of footer*/
 }
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+/* Carousel customization*/
 
 /* Carousel base class */
 .carousel {
@@ -28,11 +22,11 @@ body {
   bottom: 3rem;
   z-index: 10;
 }
-
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
 }
+
 .carousel-item > img {
   position: absolute;
   top: 0;
@@ -40,10 +34,19 @@ body {
   min-width: 100%;
   height: 32rem;
 }
+.img_style_carousel{
+  opacity: 0.5;
+  object-fit: cover;
+  filter: blur(8px)
+}
+img_style_below_carousel{
+  object-fit: cover;
+  object-position: 100% 0;  //move image position in x direction.
+  object-position: 0 100%;
+}
 
 
-/* MARKETING CONTENT
--------------------------------------------------- */
+/* Marketing (3 rounded images with text below */
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -53,16 +56,15 @@ body {
 .marketing h2 {
   font-weight: 400;
 }
-/* rtl:begin:ignore */
+
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }
-/* rtl:end:ignore */
 
 
-/* Featurettes
-------------------------- */
+
+/* Featurettes (sliding photos navbar) */
 
 .featurette-divider {
   margin: 5rem 0; /* Space out the Bootstrap <hr> more */
@@ -72,13 +74,11 @@ body {
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  /* rtl:remove */
   letter-spacing: -.05rem;
 }
 
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
+/* Adding responsivity to website*/
 
 @media (min-width: 40em) {
   /* Bump up size of carousel content */
@@ -98,7 +98,7 @@ body {
     margin-top: 7rem;
   }
 }
-
+/*Logo positioning and customization*/
 #profile-image {
   height: 100px;
   width: 100px;
@@ -110,14 +110,18 @@ body {
   height: 100%;
   width: 100%;
 }
+/*navbar font*/
 .navbar-brand{
   font-size: 40px;
   font-family: "Poor Richard", sans-serif;
 }
+/*navbar padding*/
 .container-fluid{
   padding-left: 100px;
   padding-right: 100px;
 }
+
+/*Footer section*/
 footer{
     /*top: 1005px;*/
     /*background-color: yellow;*/
@@ -140,16 +144,7 @@ footer p{
 footer p a{
   color: white;
 }
-.img_style_carousel{
-  opacity: 0.5;
-  object-fit: cover;
-  filter: blur(8px)
-}
-img_style_below_carousel{
-  object-fit: cover;
-  object-position: 100% 0;  //move image position in x direction.
-  object-position: 0 100%;
-}
+
 .register-page{
   padding: 100px;
 }
