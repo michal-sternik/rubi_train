@@ -26,7 +26,7 @@ h1 {
   justify-items: center;
   grid-row-gap: 23px;
   width: 100%;
-  padding-top: 105px;
+  padding-top: 50px;
 }
 
 .circle {
@@ -79,10 +79,10 @@ button {
 }
 </style>
 <div class="stopwatch">
-    <select class="form-select" aria-label="Default select example" style="width: 300px">
-      <option selected>Select cube type</option>
-      {% for type in cube_types %}
-        <option value="{{type}}">{{type}}</option>
+    <select name="cubetypes" class="form-select" aria-label="Default select example" style="width: 300px">
+      <option id="selected_cube" selected>Select cube type</option>
+      {% for cube in cube_types %}
+        <option value="{{cube.name}}">{{cube.name}}</option>
       {% endfor %}
     </select>
   <h1><span class="gold">RubiTrain</span> STOPWATCH</h1>
@@ -102,7 +102,9 @@ button {
     </button>
   </div>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
+
 function timeToString(time) {
   let diffInHrs = time / 3600000;
   let hh = Math.floor(diffInHrs);
@@ -138,12 +140,17 @@ function print(txt) {
 // Create "start", "pause" and "reset" functions
 
 function start() {
-  startTime = Date.now() - elapsedTime;
-  timerInterval = setInterval(function printTime() {
-    elapsedTime = Date.now() - startTime;
-    print(timeToString(elapsedTime));
-  }, 10);
-  showButton("PAUSE");
+  if(selected_cube.selected === false) {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(function printTime() {
+      elapsedTime = Date.now() - startTime;
+      print(timeToString(elapsedTime));
+    }, 10);
+    showButton("PAUSE");
+  }
+  else {
+    alert("Select cube type!")
+  }
 }
 
 function pause() {
@@ -154,10 +161,22 @@ function pause() {
 function reset() {
   clearInterval(timerInterval);
   print("00:00:00");
-  alert("Your time: " + timeToString(elapsedTime))
+  // alert("Your time: " + timeToString(elapsedTime))
+  let elapsedTime_str = timeToString(elapsedTime)
   elapsedTime = 0;
   showButton("PLAY");
-  var url = $("#Url").attr("data-url");
+  $.ajax({
+            url: '/send_time/',
+            type: "POST",
+            data: {
+              'time': elapsedTime_str,
+              'cube': $('select[name=cubetypes]').val(),
+              'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function (data) {
+                console.log("dane z serwera: ", data);
+            }
+        }); // end ajax
 }
 
 // Create function to display buttons
@@ -173,6 +192,7 @@ function showButton(buttonKey) {
 let playButton = document.getElementById("playButton");
 let pauseButton = document.getElementById("pauseButton");
 let resetButton = document.getElementById("resetButton");
+let selected_cube = document.getElementById("selected_cube");
 
 playButton.addEventListener("click", start);
 pauseButton.addEventListener("click", pause);

@@ -1,17 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class CubeType(models.Model):
     name = models.CharField(max_length=200)
+    color = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.name
 
-class Record(models.Model):
-    cubetype = models.ForeignKey(CubeType, on_delete=models.CASCADE)
+class UserResults(models.Model):
+    id = models.AutoField(primary_key=True)
+    cubetype = models.CharField(max_length=200, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="userResults", null=True)
 
     name = cubetype.name
-    time = models.TimeField()
+    time = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name + ", time: " + self.time
+        return self.name

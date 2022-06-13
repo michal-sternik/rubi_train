@@ -51,24 +51,32 @@
 <!--      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--        <span class="navbar-toggler-icon"></span>-->
 <!--      </button>-->
-      <a class="navbar-brand navbar-collapse" href="/home">RubiTrain</a>
-<!--      <div class="collapse navbar-collapse" id="navbarCollapse">-->
-<!--        <ul class="navbar-nav me-auto mb-2 mb-md-0">-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">Link</a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div>-->
+    <a class="navbar-brand navbar-collapse" href="/home">RubiTrain</a>
+        {% if user.is_authenticated %}
+<!--          <div class="collapse navbar-collapse" id="navbarCollapse">-->
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/view" onmouseover="this.style.textDecoration='underline';"
+                        onmouseout="this.style.textDecoration='none';">View your times!</a>
+              </li>
+    <!--          <li class="nav-item">-->
+    <!--            <a class="nav-link" href="#">Link</a>-->
+    <!--          </li>-->
+    <!--          <li class="nav-item">-->
+    <!--            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+    <!--          </li>-->
+            </ul>
+<!--          </div>-->
+    {% endif %}
 
         <form class="d-flex">
-          <a class="button btn btn-outline-success" href="/login" style="margin-right: 10px">Log In</a>
-          <a class="button btn btn-success" href="/register">Register</a>
+            {% if user.is_authenticated %}
+                <a class="button btn btn-success" href="/logout">Logout</a>
+            {% else %}
+                <a class="button btn btn-outline-success" href="/login" style="margin-right: 10px">Log In</a>
+                <a class="button btn btn-success" href="/register">Register</a>
+
+            {% endif %}
         </form>
     </div>
   </nav>

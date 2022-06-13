@@ -1,0 +1,33 @@
+
+{% extends "main/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+{% include "base.html" %}
+
+{% block content %}
+<div style="padding: 100px">
+    <h1>Your Times</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cube Type</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in user.userResults.all %}
+            <tr>
+              <th scope="row">{{record.id}}</th>
+              <td>{{record.cubetype}}</td>
+              <td>{{record.time}}</td>
+              <td><a href="{% url 'delete_record' record.id %}" class="button btn btn-success">Delete</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
