@@ -44,5 +44,17 @@ def view_competitions(request):
         "https://www.worldcubeassociation.org/competitions?utf8=%E2%9C%93&region=Poland&search=&state=present&year=all+years&from_date=&to_date=&delegate=&display=list").text
     soup = BeautifulSoup(html_page, 'html.parser')
     # comps = soup.find_all(class_='list-group-item not-past')
-    comps = soup.select("li span a")
-    return render(request, "main/competitions.html", {"comps":comps})
+    comps = soup.find_all('div', class_="competition-link")
+    dates = soup.find_all('span', class_="date")
+    compsToPass = []
+
+    for comp, date in zip(comps, dates):
+        compsToPass.append((comp.a.text, "https://www.worldcubeassociation.org/"+str(comp.a).split('"')[1], date.text))
+        # print(date.text)
+    # print(compsToPass[0][1])
+    for comp in compsToPass:
+        print(comp[0])
+    return render(request, "main/competitions.html", {"comps":compsToPass})
+
+def display_algs(response):
+    return render(response, "main/algorithms.html", {})

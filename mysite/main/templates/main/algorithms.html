@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Home site{% endblock %}
+{% include "base.html" %}
+{% block content %}
+
+<style>
+body {
+  background-color: #2c3347;
+  color: #ffffff;
+}
+h1 {
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+
+  text-align: center;
+  line-height: 59px;
+
+  padding: 0 64px;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+  outline: none;
+}
+
+</style>
+<div>
+{#    {% for comp in comps %}#}
+{#        {% with course=comp %}#}
+{#        <p>{{ course }}</p>#}
+{#        {% endwith %}#}
+{#    {% endfor %}#}
+</div>
+<div style="padding: 100px">
+    <h1 style="margin-bottom: 30px">Download PDF with algorithms to learn!</h1>
+    <table class="table" style="color: white">
+      <thead>
+        <tr>
+          <th scope="col">Cube type</th>
+          <th scope="col">Type</th>
+          <th scope="col">Download/Open</th>
+        </tr>
+      </thead>
+      <tbody>
+{#        {% for comp, link, date in comps %}#}
+            <tr>
+              <td>3x3</td>
+              <td>How to solve rubiks cube - basic tutorial</td>
+              <td><a href="{% static 'main/algorithms/kurs_układania_kostki_rubika_offline.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>3x3</td>
+              <td>F2L Algorithms</td>
+              <td><a href="{% static 'main/algorithms/f2l.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>3x3</td>
+              <td>OLL Algorithms</td>
+              <td><a href="{% static 'main/algorithms/oll-algorithms.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>3x3</td>
+              <td>PLL Algorithms</td>
+              <td><a href="{% static 'main/algorithms/pll-algorithms.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>4x4</td>
+              <td>Basic method to solve 4x4</td>
+              <td><a href='{% static "main/algorithms/How To Solve the 4x4 Rubik's Cube.pdf" %}' >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>4x4</td>
+              <td>Yau method for 4x4</td>
+              <td><a href="{% static 'main/algorithms/intermediate-tips-and-yau-method.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>5x5</td>
+              <td>How to solve 5x5 - beginners method</td>
+              <td><a href="{% static 'main/algorithms/beginners-method-for-solving-the-5x5-cube.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>5x5</td>
+              <td>5x5 Yau method explained</td>
+              <td><a href="{% static 'main/algorithms/the-yau5-method.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>Pyraminx</td>
+              <td>How to solve pyraminx with algorithms</td>
+              <td><a href="{% static 'main/algorithms/PyraminxSolutionMonroe.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>Skweb</td>
+              <td>Tutorial how to solve skweb basic method</td>
+              <td><a href="{% static 'main/algorithms/skewb-guide.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>Square-1</td>
+              <td>Algorithms for square-1</td>
+              <td><a href="{% static 'main/algorithms/andy-klise-square-1.pdf' %}" >Get pdf</a></td>
+            </tr>
+            <tr>
+              <td>3x3</td>
+              <td>OLL Algorithms</td>
+              <td><a href="{% static 'main/algorithms/oll-algorithms.pdf' %}" >Get pdf</a></td>
+            </tr>
+
+
+{#        {% endfor %}#}
+      </tbody>
+    </table>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+{% endblock %}

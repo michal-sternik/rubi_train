@@ -32,10 +32,34 @@ button {
 
 </style>
 <div>
-    {% for comp in comps %}
-    <p>{{comp}}</p>
-    {% endfor %}
+{#    {% for comp in comps %}#}
+{#        {% with course=comp %}#}
+{#        <p>{{ course }}</p>#}
+{#        {% endwith %}#}
+{#    {% endfor %}#}
 </div>
+<div style="padding: 100px">
+    <h1 style="margin-bottom: 30px">Closest competitions!</h1>
+    <table class="table" style="color: white">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Open Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comp, link, date in comps %}
+            <tr>
+              <td>{{comp}}</td>
+              <td>{{date}}</td>
+              <td><a href="{{ link }}" class="button btn btn-success">Visit competition page!</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 

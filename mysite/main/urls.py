@@ -15,7 +15,8 @@ urlpatterns = [
     path('send_time/', views.send_time, name='send_time'),
     path("view/", views.view, name="view"),
     path("view_competitions/", views.view_competitions, name="view_competitions"),
-    path("delete_record/<record_id>",views.delete_record, name="delete_record")
+    path("delete_record/<record_id>",views.delete_record, name="delete_record"),
+    path("algorithms/",views.display_algs, name="display_algs")
 ]
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
