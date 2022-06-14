@@ -169,7 +169,7 @@ function reset() {
   let elapsedTime_str = timeToString(elapsedTime)
   elapsedTime = 0;
   showButton("PLAY");
-  {#ajax here to send received time from timer and push it to database for specific user#}
+  //ajax here to send received time from timer and push it to database for specific user
   $.ajax({
             url: '/send_time/',
             type: "POST",

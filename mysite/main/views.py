@@ -51,10 +51,7 @@ def view_competitions(request):
 
     for comp, date in zip(comps, dates):
         compsToPass.append((comp.a.text, "https://www.worldcubeassociation.org/"+str(comp.a).split('"')[1], date.text))
-        # print(date.text)
-    # print(compsToPass[0][1])
-    for comp in compsToPass:
-        print(comp[0])
+
     return render(request, "main/competitions.html", {"comps":compsToPass})
 
 # site to display pdf documents with tutorials/algorithms
